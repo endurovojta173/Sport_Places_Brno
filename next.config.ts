@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   reactCompiler: true,
   output: "export",
-  basePath: "/waf_frontend_brno",
+  basePath: "/Sport_Places_Brno",
   images: {
     unoptimized: true,
   },
