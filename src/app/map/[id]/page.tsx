@@ -1,10 +1,17 @@
-import { fetchSportPlaceById } from "@/services/sport-places-api";
+import { fetchSportPlaceById, fetchSportPlaces } from "@/services/sport-places-api";
 import { getCachedPublicTransport } from "@/services/public-transport-api";
 import { getNearestStops } from "@/utils/distance-between-sport-place-and-public-transport";
 import FavoriteButton from "@/components/FavoriteButton";
 import PublicTransportCard from "@/components/PublicTransportCard";
 import Link  from "next/link";
 import MapWrapper  from "@/components/MapWrapper";
+
+export async function generateStaticParams() {
+  const sportPlaces = await fetchSportPlaces();
+  return sportPlaces.map((place) => ({
+    id: place.id.toString(),
+  }));
+}
 
 export default async function DetailPage({ 
   params 
