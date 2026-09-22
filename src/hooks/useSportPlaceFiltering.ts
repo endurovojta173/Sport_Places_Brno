@@ -16,12 +16,14 @@ function getUniqueTypes(places: SportPlaceWithZone[]) {
     return Array.from(new Set(types));
 }
 
+const removeDiacritics = (str: string) => str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+
 // Core filtering logic. Returns true only if the place matches all active filters.
 function filterSportPlaces(
     places: SportPlaceWithZone[],
     { type, zone, searchQuery }: SportPlaceFilteringOptions
 ) {
-    const normalizedQuery = searchQuery?.trim().toLowerCase();
+    const normalizedQuery = searchQuery ? removeDiacritics(searchQuery.trim()) : undefined;
 
     return places.filter(place => {
         // Drop place if it doesn't match the selected type (and type isn't "all")
@@ -31,7 +33,7 @@ function filterSportPlaces(
         if (zone && zone !== "all" && place.computedZone !== zone) return false;
         
         // Drop place if its title doesn't contain the search query
-        if (normalizedQuery && !place.title.toLowerCase().includes(normalizedQuery)) {
+        if (normalizedQuery && !removeDiacritics(place.title).includes(normalizedQuery)) {
             return false;
         }
         

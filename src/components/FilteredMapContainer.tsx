@@ -29,10 +29,11 @@ export default function FilteredMapContainer({ sportPlaces }: { sportPlaces: Spo
     });
 
     const suggestions = useMemo(() => {
-        const query = searchQuery.trim().toLowerCase();
+        const query = searchQuery ? searchQuery.trim() : "";
         if (!query) return [];
+        const normalizedQuery = query.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
         return sportPlaces
-            .filter(place => place.title.toLowerCase().includes(query))
+            .filter(place => place.title.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().includes(normalizedQuery))
             .slice(0, 8);
     }, [sportPlaces, searchQuery]);
 
