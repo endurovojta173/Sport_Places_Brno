@@ -67,8 +67,8 @@ export function Navbar() {
 
       <div
         id="mobile-nav"
-        className={`md:hidden border-t bg-white transition-all ${
-          isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        className={`md:hidden border-t bg-white transition-all overflow-hidden ${
+          isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0 pointer-events-none"
         }`}
       >
         <nav className="container mx-auto flex flex-col gap-3 px-4 py-4">
