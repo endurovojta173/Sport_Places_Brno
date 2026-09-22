@@ -1,6 +1,6 @@
 # Sport Brno 🏀
 
-An interactive web application for searching and discovering sports facilities in the statutory city of Brno. The project uses open data from the city of Brno to display sports facilities on a map, find the nearest public transport stops, and allow users to save their favorite places. You can try it out [here](endurovojta173.github.io/Sport_Places_Brno/)
+An interactive web application for searching and discovering sports facilities in the statutory city of Brno. The project uses open data from the city of Brno to display sports facilities on a map, find the nearest public transport stops, and allow users to save their favorite places. You can try it out here -> [Sport places Brno](https://github.com/endurovojta173/Sport_Places_Brno)
 
 ## 🚀 Key Features
 
